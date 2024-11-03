@@ -35,8 +35,8 @@ function App() {
       </p>
       <div>
       <WelcomeMessage />
-      </div>
-      <div>
+    </div>
+    <div>
       <Header />
     </div>
     <div>
