@@ -17,6 +17,7 @@ function UserProfile() {
         transition-transform
         duration-300
         ease-in-out
+       hover:shadow-xl
       "
     >
       <img
