@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "title": "Spaghetti Carbonara",
+        "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
+        "image": "https://via.placeholder.com/150",
+        "ingredients": "One packet of pasta, three eggs, cheddar cheese, bacon, blackpepper, tomatoes, salt, olive oil",
+        "instructions": "Boil the pasta in salty water for about five minutes and strain it dry. Make sure to drain all of the water to prevent it from overcooking. Blend your tomatoes to a tomato puree and place aside. Put 4 tablespoons of olive oil in a pan, and fry your bacon and eggs. When ready, place your tomato puree and add blackpepper. Stir until all the ingredients are mixed up, then place your pasta inside. Stir until it turns a red color then leave to cool. Grate some cheddar cheese thrn sprinkle on top. Enjoy!"
+        
+    },
+
+    {
+        "id": 2,
+        "title": "Chicken Tikka Masala",
+        "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
+        "image": "https://via.placeholder.com/150",
+        "ingredients": "Chicken, yogurt, garlic, ginger, tomatoes, onion, cream, spices",
+        "instructions": "Marinate chicken with yogurt, garlic, ginger, and spices. Grill the chicken. Prepare a sauce with tomatoes, onion, garlic, and cream. Add grilled chicken to the sauce. Cook until the chicken is tender and flavors are well combined."
+    }
+]
