@@ -15,17 +15,25 @@ export const searchGitHubUsers = async (query, minRepos = 0, location = '') => {
     // Construct the search query
     let searchQuery = query;
 
+    // Add filter for minimum repositories if provided
     if (minRepos > 0) {
-      searchQuery += ` repos:>=${minRepos}`;  // Filter by minimum number of repositories
+      searchQuery += ` repos:>=${minRepos}`;
     }
 
+    // Add filter for location if provided
     if (location) {
-      searchQuery += ` location:${location}`;  // Filter by location
+      searchQuery += ` location:${location}`;
     }
+
+    // Construct the full URL with the query and filters
+    const url = `${BASE_URL}/search/users?q=${encodeURIComponent(searchQuery)}`;
 
     // Perform the API call
-    const response = await axios.get(`${BASE_URL}/search/users?q=${encodeURIComponent(searchQuery)}`);
-    return response.data.items;  // Return the list of users
+    const response = await axios.get(url);
+
+    // Return the list of users that match the query and filters
+    return response.data.items;
+
   } catch (error) {
     console.error('Error searching GitHub users:', error);
     throw error;
