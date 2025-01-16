@@ -4,29 +4,29 @@ import axios from 'axios';
 const BASE_URL = 'https://api.github.com';
 
 /**
- * Fetch a GitHub user's profile information.
- * @param {string} username - GitHub username to fetch.
- * @returns {Promise<Object>} - Promise resolving to user data.
+ * Fetch GitHub user data.
+ * @param {string} username - The GitHub username to fetch data for.
+ * @returns {Promise<Object>} - The user's profile data.
  */
-export const fetchGitHubUser = async (username) => {
+export const fetchUserData = async (username) => {
   try {
     const response = await axios.get(`${BASE_URL}/users/${username}`);
-    return response.data; // Return user data
+    return response.data; // Return the user data
   } catch (error) {
-    console.error('Error fetching GitHub user:', error);
+    console.error('Error fetching user data:', error);
     throw error;
   }
 };
 
 /**
- * Fetch a GitHub user's repositories.
- * @param {string} username - GitHub username to fetch repos for.
- * @returns {Promise<Array>} - Promise resolving to a list of repositories.
+ * Fetch GitHub user repositories.
+ * @param {string} username - The GitHub username to fetch repositories for.
+ * @returns {Promise<Array>} - A list of repositories for the user.
  */
 export const fetchUserRepos = async (username) => {
   try {
     const response = await axios.get(`${BASE_URL}/users/${username}/repos`);
-    return response.data; // Return repositories data
+    return response.data; // Return the list of repositories
   } catch (error) {
     console.error('Error fetching user repositories:', error);
     throw error;
