@@ -4,17 +4,17 @@ import axios from 'axios';
 const BASE_URL = 'https://api.github.com';
 
 /**
- * Search GitHub users by query with optional filters for location.
+ * Search GitHub users by query with optional filters for minimum repositories.
  * @param {string} query - The search query (e.g., "developer").
- * @param {string} [location] - Filter users by location (optional).
+ * @param {number} [minRepos] - Minimum number of repositories for filtering (optional).
  * @returns {Promise<Array>} - List of users matching the query and filters.
  */
-export const searchGitHubUsers = async (query, location = '') => {
+export const searchGitHubUsers = async (query, minRepos = 0) => {
   try {
     // Construct the search query
     let searchQuery = query;
-    if (location) {
-      searchQuery += ` location:${location}`;
+    if (minRepos > 0) {
+      searchQuery += ` repos:>=${minRepos}`;
     }
 
     // Perform the API call
