@@ -4,31 +4,28 @@ import axios from 'axios';
 const BASE_URL = 'https://api.github.com';
 
 /**
- * Fetch GitHub user data.
- * @param {string} username - The GitHub username to fetch data for.
- * @returns {Promise<Object>} - The user's profile data.
+ * Search for GitHub users with specific criteria.
+ * @param {string} query - The search query (e.g., username, location, etc.).
+ * @param {string} location - Filter users by location (optional).
+ * @param {number} minRepos - Filter users with at least this number of repositories (optional).
+ * @returns {Promise<Array>} - List of users matching the criteria.
  */
-export const fetchUserData = async (username) => {
+export const searchGitHubUsers = async (query, location = '', minRepos = 0) => {
   try {
-    const response = await axios.get(`${BASE_URL}/users/${username}`);
-    return response.data; // Return the user data
-  } catch (error) {
-    console.error('Error fetching user data:', error);
-    throw error;
-  }
-};
+    // Construct the search query
+    let searchQuery = query;
+    if (location) {
+      searchQuery += ` location:${location}`;
+    }
+    if (minRepos > 0) {
+      searchQuery += ` repos:>=${minRepos}`;
+    }
 
-/**
- * Fetch GitHub user repositories.
- * @param {string} username - The GitHub username to fetch repositories for.
- * @returns {Promise<Array>} - A list of repositories for the user.
- */
-export const fetchUserRepos = async (username) => {
-  try {
-    const response = await axios.get(`${BASE_URL}/users/${username}/repos`);
-    return response.data; // Return the list of repositories
+    // Make the API call
+    const response = await axios.get(`${BASE_URL}/search/users?q=${encodeURIComponent(searchQuery)}`);
+    return response.data.items; // Return the list of users
   } catch (error) {
-    console.error('Error fetching user repositories:', error);
+    console.error('Error searching GitHub users:', error);
     throw error;
   }
 };
